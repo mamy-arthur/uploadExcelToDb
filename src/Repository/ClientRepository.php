@@ -42,16 +42,16 @@ class ClientRepository extends ServiceEntityRepository
             $client->setCellPhone($clientData[13]);
             $client->setJobPhone($clientData[14]);
             $client->setEmail(strtolower($clientData[15]));
-            $dateOfEntryIntoCirculation = \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[16])
-                ? \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[16])
+            $dateOfEntryIntoCirculation = \DateTime::createFromFormat('d/m/Y', $clientData[16])
+                ? \DateTime::createFromFormat('d/m/Y', $clientData[16])
                 : null;
             $client->setDateOfEntryIntoCirculation($dateOfEntryIntoCirculation);
-            $purchaseDate = \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[17])
-                ? \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[17])
+            $purchaseDate = \DateTime::createFromFormat('d/m/Y', $clientData[17])
+                ? \DateTime::createFromFormat('d/m/Y', $clientData[17])
                 : null;
             $client->setPurchaseDate($purchaseDate);
-            $lastEventDate = \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[18])
-                ? \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[18])
+            $lastEventDate = \DateTime::createFromFormat('d/m/Y', $clientData[18])
+                ? \DateTime::createFromFormat('d/m/Y', $clientData[18])
                 : null;
             $client->setLastEventDate($lastEventDate);
             $client->setBrandName($clientData[19]);
@@ -68,8 +68,8 @@ class ClientRepository extends ServiceEntityRepository
             $client->setTypeVNVO($clientData[30]);
             $client->setFileNumber($clientData[31]);
             $client->setSalesIntermediary($clientData[32]);
-            $eventDate = \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[33])
-                ? \DateTimeImmutable::createFromFormat('d/m/Y', $clientData[33])
+            $eventDate = \DateTime::createFromFormat('d/m/Y', $clientData[33])
+                ? \DateTime::createFromFormat('d/m/Y', $clientData[33])
                 : null;
             $client->setEventDate($eventDate);
             $client->setEventOrigin($clientData[34]);
@@ -77,6 +77,11 @@ class ClientRepository extends ServiceEntityRepository
             $this->getEntityManager()->persist($client);
         }
         $this->getEntityManager()->flush();
+    }
+
+    public function getClientList(int $number)
+    {
+        return $this->findAll();
     }
 
 //    /**

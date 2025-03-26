@@ -62,13 +62,13 @@ class Client
     private ?string $email = null;
 
     #[ORM\Column(type: "date", nullable: true)]
-    private ?\DateTimeImmutable $dateOfEntryIntoCirculation = null;
+    private ?\DateTime $dateOfEntryIntoCirculation = null;
 
     #[ORM\Column(type: "date", nullable: true)]
-    private ?\DateTimeImmutable $purchaseDate = null;
+    private ?\DateTime $purchaseDate = null;
 
     #[ORM\Column(type: "date", nullable: true)]
-    private ?\DateTimeImmutable $lastEventDate = null;
+    private ?\DateTime $lastEventDate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $brandName = null;
@@ -113,7 +113,7 @@ class Client
     private ?string $salesIntermediary = null;
 
     #[ORM\Column(type: "date", nullable: true)]
-    private ?\DateTimeImmutable $eventDate = null;
+    private ?\DateTime $eventDate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $eventOrigin = null;
@@ -315,36 +315,36 @@ class Client
         return $this;
     }
 
-    public function getDateOfEntryIntoCirculation(): ?\DateTimeImmutable
+    public function getDateOfEntryIntoCirculation(): ?\DateTime
     {
         return $this->dateOfEntryIntoCirculation;
     }
 
-    public function setDateOfEntryIntoCirculation(?\DateTimeImmutable $dateOfEntryIntoCirculation): static
+    public function setDateOfEntryIntoCirculation(?\DateTime $dateOfEntryIntoCirculation): static
     {
         $this->dateOfEntryIntoCirculation = $dateOfEntryIntoCirculation;
 
         return $this;
     }
 
-    public function getPurchaseDate(): ?\DateTimeImmutable
+    public function getPurchaseDate(): ?\DateTime
     {
         return $this->purchaseDate;
     }
 
-    public function setPurchaseDate(?\DateTimeImmutable $purchaseDate): static
+    public function setPurchaseDate(?\DateTime $purchaseDate): static
     {
         $this->purchaseDate = $purchaseDate;
 
         return $this;
     }
 
-    public function getLastEventDate(): ?\DateTimeImmutable
+    public function getLastEventDate(): ?\DateTime
     {
         return $this->lastEventDate;
     }
 
-    public function setLastEventDate(?\DateTimeImmutable $lastEventDate): static
+    public function setLastEventDate(?\DateTime $lastEventDate): static
     {
         $this->lastEventDate = $lastEventDate;
 
@@ -519,12 +519,12 @@ class Client
         return $this;
     }
 
-    public function getEventDate(): ?\DateTimeImmutable
+    public function getEventDate(): ?\DateTime
     {
         return $this->eventDate;
     }
 
-    public function setEventDate(?\DateTimeImmutable $eventDate): static
+    public function setEventDate(?\DateTime $eventDate): static
     {
         $this->eventDate = $eventDate;
 

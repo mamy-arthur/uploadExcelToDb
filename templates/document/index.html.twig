@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DocumentController!{% endblock %}
+{% block title %}Upload File{% endblock %}
 
 {% block body %}
     <h1>Uploader un fichier Excel</h1>
 
-    {{ form_start(form) }}
-        {{ form_row(form.file) }}
-        <button type="submit">Envoyer</button>
-    {{ form_end(form) }}
+    <div>
+        {{ form_start(form) }}
+            {{ form_row(form.file) }}
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Envoyer</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
 
     {% for message in app.flashes('error') %}
-        <p style="color: red;">{{ message }}</p>
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
     {% endfor %}
 {% endblock %}
