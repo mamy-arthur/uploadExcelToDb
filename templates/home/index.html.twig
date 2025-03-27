@@ -11,7 +11,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
@@ -20,7 +19,6 @@
         <tbody>
             {% for client in clients %}
             <tr>
-                <th scope="row">{{client.id}}</th>
                 <td>{{client.name}}</td>
                 <td>{{client.email}}</td>
                 <td>{{client.zipCode}} {{client.trackName}} {{client.city}}</td>
@@ -28,4 +26,9 @@
             {% endfor %}
         </tbody>
     </table>
+   {% include 'components/pagination.html.twig' with {
+        'currentPage': currentPage,
+        'totalPages': totalPages,
+        'routeName': 'app_home',
+    } %}
 {% endblock %}

@@ -10,8 +10,8 @@ class ClientService
         private ClientRepository $clientRepository
     ) {}
 
-    public function getClientList(int $number)
+    public function getClientList(int $limit, int $page)
     {
-        return $this->clientRepository->getClientList($number);
+        return $this->clientRepository->getClientList($limit, $page);
     }
 }

@@ -79,9 +79,16 @@ class ClientRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function getClientList(int $number)
+    public function getClientList(int $limit, int $page)
     {
-        return $this->findAll();
+        $offset = ($page - 1) * $limit;
+        $clients = $this->findBy([], ['id' => 'ASC'], $limit, $offset);
+        $totalClients = $this->count([]);
+        $totalPages = ceil($totalClients / $limit);
+        return [
+            'clients' => $clients,
+            'totalPages' => $totalPages
+        ];
     }
 
 //    /**
