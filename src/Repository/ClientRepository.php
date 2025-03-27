@@ -86,8 +86,9 @@ class ClientRepository extends ServiceEntityRepository
         $totalClients = $this->count([]);
         $totalPages = ceil($totalClients / $limit);
         return [
-            'clients' => $clients,
-            'totalPages' => $totalPages
+            $clients,
+            $totalPages,
+            $totalClients
         ];
     }
 

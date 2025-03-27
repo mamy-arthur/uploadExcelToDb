@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client Info{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Customer Information</h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ client.name }} {{ client.firstname }}</h5>
+                    <p class="text-center text-muted">{{ client.businessAccount }}</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Address :</strong> {{ client.trackName }}, {{ client.city }} ({{ client.zipCode }})</p>
+                            <p><strong>Phone :</strong> {{ client.cellPhone ?: 'N/A' }}</p>
+                            <p><strong>Email :</strong> <a href="mailto:{{ client.email }}">{{ client.email }}</a></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Current owner :</strong> {{ client.currentVehiclesOwner }}</p>
+                            <p><strong>Type :</strong> {{ client.leadType }}</p>
+                            <p><strong>Last event :</strong> {{ client.lastEventAccount }}</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="text-center">Vehicle Details</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Brand :</strong> {{ client.brandName }}</p>
+                            <p><strong>Model :</strong> {{ client.modelWording }}</p>
+                            <p><strong>VIN :</strong> {{ client.VIN }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Registration :</strong> {{ client.licenceNumber }}</p>
+                            <p><strong>Mileage :</strong> {{ client.mileage }} km</p>
+                            <p><strong>Energy :</strong> {{ client.energyLabel ?: 'N/A' }}</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="text-center">Other Information</h5>
+                    <p><strong>Date of the event :</strong> {{ client.eventDate|date('d/m/Y') }}</p>
+                    <p><strong>Origin :</strong> {{ client.eventOrigin }}</p>
+                    <p><strong>Comment :</strong> {{ client.billingComment ?: 'Aucun' }}</p>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ path('app_home') }}" class="btn btn-outline-secondary">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
