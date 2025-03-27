@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Document;
 use App\Form\DocumentType;
 use App\Services\FileManagerService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +16,13 @@ class DocumentController extends AbstractController
     {}
 
     #[Route('/document', name: 'app_document')]
-    public function index(Request $request, EntityManagerInterface $em): Response
+    /**
+     * Handle file uplaod
+     * 
+     * @param Request $request
+     * @return Response
+     */
+    public function index(Request $request): Response
     {
         $document = new Document();
         $form = $this->createForm(DocumentType::class, $document);

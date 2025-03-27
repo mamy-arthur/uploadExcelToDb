@@ -19,7 +19,15 @@ class FileManagerService
         private ClientRepository $clientRepository
     ) {}
 
-    public function handleSubmittedFile(Form $form, Document $document, Request $request)
+    /**
+     * Handle submitted file
+     * 
+     * @param Form $form
+     * @param Document $document
+     * @param Request $request
+     * @return null|bool
+     */
+    public function handleSubmittedFile(Form $form, Document $document, Request $request): null|bool
     {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,7 +70,7 @@ class FileManagerService
      * @return array Return an array of client
      * @throws \Exception If there is an error
      */
-    protected function convertExcelDataToArray(string $filePath)
+    protected function convertExcelDataToArray(string $filePath): array
     {
         $zip = new \ZipArchive;
 

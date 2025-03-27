@@ -9,6 +9,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: DocumentRepository::class)]
 #[Vich\Uploadable]
+/**
+ * Document entity
+ */
 class Document
 {
     #[ORM\Id]

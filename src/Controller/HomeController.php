@@ -7,6 +7,7 @@ use App\Services\ClientService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -17,6 +18,12 @@ class HomeController extends AbstractController
     {}
 
     #[Route('/', name: 'app_home')]
+    /**
+     * Get list of clients
+     * 
+     * @param Request $request
+     * @return Response
+     */
     public function index(Request $request): Response
     {
         $page = max(1, $request->query->getInt('page', 1));
@@ -30,7 +37,13 @@ class HomeController extends AbstractController
     }
 
     #[Route('/client/{id}', name: 'client_details')]
-    public function showClient(Client $client)
+    /**
+     * Show client info
+     * 
+     * @param Client $client
+     * @return Response
+     */
+    public function showClient(Client $client): Response
     {
         return $this->render('home/show_client.html.twig', [
             'client' => $client
