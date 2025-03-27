@@ -21,7 +21,12 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
-    public function saveDocumentInfoToDatabase(array $data)
+    /**
+     * Save clients info from excel file to database
+     * 
+     * @param array $data
+     */
+    public function saveDocumentInfoToDatabase(array $data): void
     {
         $dataObject = [];
         foreach ($data as $clientData) {
@@ -79,7 +84,14 @@ class ClientRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function getClientList(int $limit, int $page)
+    /**
+     * Get client list info
+     * 
+     * @param int $limit
+     * @param int $page
+     * @return array
+     */
+    public function getClientList(int $limit, int $page): array
     {
         $offset = ($page - 1) * $limit;
         $clients = $this->findBy([], ['id' => 'ASC'], $limit, $offset);
@@ -91,29 +103,4 @@ class ClientRepository extends ServiceEntityRepository
             $totalClients
         ];
     }
-
-//    /**
-//     * @return Client[] Returns an array of Client objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Client
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

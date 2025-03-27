@@ -10,7 +10,14 @@ class ClientService
         private ClientRepository $clientRepository
     ) {}
 
-    public function getClientList(int $limit, int $page)
+    /**
+     * Get client list info
+     * 
+     * @param int $limit
+     * @param int $page
+     * @return array
+     */
+    public function getClientList(int $limit, int $page): array
     {
         return $this->clientRepository->getClientList($limit, $page);
     }
